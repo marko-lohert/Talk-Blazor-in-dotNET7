@@ -4,9 +4,14 @@ namespace EmployeeDirectory.Server.DAL;
 
 public class DirectoryOfEmployeesDAO
 {
+    public static DirectoryOfEmployees? CacheDirectoryOfEmployees { get; private set; } = new() { Employees = new() };
+
     public DirectoryOfEmployees GetDirectoryOfEmployees()
     {
-        return MockDataDirectoryOfEmployees(countEmployees: 1000);
+        if (CacheDirectoryOfEmployees?.Employees is null || CacheDirectoryOfEmployees.Employees.Count == 0)
+            CacheDirectoryOfEmployees = MockDataDirectoryOfEmployees(countEmployees: 1000);
+        
+        return CacheDirectoryOfEmployees;
     }
 
     private static DirectoryOfEmployees MockDataDirectoryOfEmployees(int countEmployees)
@@ -34,13 +39,14 @@ public class DirectoryOfEmployeesDAO
         int maxPossibleDatesOnJob = DateTime.Now.Date.Subtract(minPossibleDateOfEmployment).Days;
         DateTime randomDateOfEmployment = minPossibleDateOfEmployment.AddDays(Random.Shared.Next(maxPossibleDatesOnJob));
 
-        return new Employee(
-            FirstName: randomFirstName,
-            LastName: randomLastName,
-            DateOfBirth: randomDateOfBirth,
-            DateOfEmployment: randomDateOfEmployment,
-            Biography: string.Empty
-            );
+        return new Employee()
+        {
+            FirstName = randomFirstName,
+            LastName = randomLastName,
+            DateOfBirth = randomDateOfBirth,
+            DateOfEmployment = randomDateOfEmployment,
+            Biography = string.Empty
+        };
     }
 
     static readonly string[] FirstNames = { "Anna", "Arthur", "Barbara", "Bill", "Jane", "Joe", "John", "Nicole", "Susan", "Mark" };

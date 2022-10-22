@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33006.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDirectory.Server", "EmployeeDirectory\Server\EmployeeDirectory.Server.csproj", "{B608070C-D783-4B0C-9C3B-3AF586148F9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeDirectory.Server", "EmployeeDirectory\Server\EmployeeDirectory.Server.csproj", "{B608070C-D783-4B0C-9C3B-3AF586148F9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDirectory.Client", "EmployeeDirectory\Client\EmployeeDirectory.Client.csproj", "{BCA93291-FB56-4622-89B2-2A5C5CFD33E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeDirectory.Client", "EmployeeDirectory\Client\EmployeeDirectory.Client.csproj", "{BCA93291-FB56-4622-89B2-2A5C5CFD33E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDirectory.Shared", "EmployeeDirectory\Shared\EmployeeDirectory.Shared.csproj", "{925694BA-D6B8-4319-813C-78EF5693CF05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeDirectory.Shared", "EmployeeDirectory\Shared\EmployeeDirectory.Shared.csproj", "{925694BA-D6B8-4319-813C-78EF5693CF05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

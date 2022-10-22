@@ -1,0 +1,39 @@
+﻿@page "/newEmployee"
+
+@inject HttpClient Http
+
+<PageTitle>New Employee</PageTitle>
+
+<h1>New Employee</h1>
+
+<EditForm Model="@NewEmployeeModel" OnValidSubmit="@NewUserSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="row">
+        <label class="form-label col-md-2">First Name</label>
+        <InputText id="inputFirstName" @bind-Value="NewEmployeeModel.FirstName" class="form-control-sm col-md-4" />
+    </div>
+
+    <div class="row">
+        <label class="form-label col-md-2">Last Name</label>
+        <InputText id="inputLastName" @bind-Value="NewEmployeeModel.LastName" class="form-control-sm col-md-4" />
+    </div>
+
+    <div class="row">
+        <label class="form-label col-md-2">Date of Birth</label>
+        <InputDate id="inputDateOfBirth" @bind-Value="NewEmployeeModel.DateOfBirth" class="form-control-sm col-md-2" />
+    </div>
+
+    <div class="row">
+        <label class="form-label col-md-2">Date of Employment</label>
+        <InputDate id="inputDateOfEmployment" @bind-Value="NewEmployeeModel.DateOfEmployment" class="form-control-sm col-md-2" />
+    </div>
+
+    <label class="form-label">Biography</label>
+    <InputTextArea id="inputBiography" @bind-Value="NewEmployeeModel.Biography" class="form-control" rows="5" />
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</EditForm>
