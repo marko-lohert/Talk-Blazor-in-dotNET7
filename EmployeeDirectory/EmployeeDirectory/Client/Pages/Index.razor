@@ -1,5 +1,32 @@
 ﻿@page "/"
 
+@inject HttpClient Http
+
 <PageTitle>Directory of Employees</PageTitle>
 
 <h1>Directory of Employees</h1>
+
+@if (Directory?.Employees is not null)
+{
+    <table class="table" style="width:1000px">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Date of Employment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Employee employee in @Directory.Employees)
+            {
+                <tr>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>@employee.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                    <td>@employee.DateOfEmployment.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
