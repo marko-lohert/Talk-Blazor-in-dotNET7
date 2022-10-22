@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
 	<Copyright>Copyright (c) 2022 Marko Lohert</Copyright>
 	<Authors>Marko Lohert</Authors>
-	<PackageLicenseFile>..\..\..\LICENSE</PackageLicenseFile>
+	<PackageLicenseFile>..\..\..\..\LICENSE</PackageLicenseFile>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
   </PropertyGroup>
 
