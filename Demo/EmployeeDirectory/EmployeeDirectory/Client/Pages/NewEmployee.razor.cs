@@ -24,6 +24,8 @@ public partial class NewEmployee
     private void NewUserSubmit()
     {
         Http.PostAsJsonAsync<Employee>("Employee", NewEmployeeModel);
+
+        IsDirty = false;
     }
 
     void OnDataInput()
