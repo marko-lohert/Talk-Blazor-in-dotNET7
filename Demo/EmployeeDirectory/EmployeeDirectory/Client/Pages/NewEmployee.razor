@@ -1,6 +1,8 @@
 ﻿@page "/newEmployee"
 
 @inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
 
 <PageTitle>New Employee</PageTitle>
 
@@ -12,28 +14,36 @@
 
     <div class="row">
         <label class="form-label col-md-2">First Name</label>
-        <InputText id="inputFirstName" @bind-Value="NewEmployeeModel.FirstName" class="form-control-sm col-md-4" />
+        <InputText id="inputFirstName" @bind-Value="NewEmployeeModel.FirstName" @oninput="OnDataInput" class="form-control-sm col-md-4" />
     </div>
 
     <div class="row">
         <label class="form-label col-md-2">Last Name</label>
-        <InputText id="inputLastName" @bind-Value="NewEmployeeModel.LastName" class="form-control-sm col-md-4" />
+        <InputText id="inputLastName" @bind-Value="NewEmployeeModel.LastName" @oninput="OnDataInput" class="form-control-sm col-md-4" />
     </div>
 
     <div class="row">
         <label class="form-label col-md-2">Date of Birth</label>
-        <InputDate id="inputDateOfBirth" @bind-Value="NewEmployeeModel.DateOfBirth" class="form-control-sm col-md-2" />
+        <InputDate id="inputDateOfBirth" @bind-Value="NewEmployeeModel.DateOfBirth" @oninput="OnDataInput" class="form-control-sm col-md-2" />
     </div>
 
     <div class="row">
         <label class="form-label col-md-2">Date of Employment</label>
-        <InputDate id="inputDateOfEmployment" @bind-Value="NewEmployeeModel.DateOfEmployment" class="form-control-sm col-md-2" />
+        <InputDate id="inputDateOfEmployment" @bind-Value="NewEmployeeModel.DateOfEmployment" @oninput="OnDataInput" class="form-control-sm col-md-2" />
     </div>
 
     <label class="form-label">Biography</label>
-    <InputTextArea id="inputBiography" @bind-Value="NewEmployeeModel.Biography" class="form-control" rows="5" />
+    <InputTextArea id="inputBiography" @bind-Value="NewEmployeeModel.Biography" @oninput="OnDataInput" class="form-control" rows="5" />
 
     <br />
 
     <button type="submit" class="btn btn-primary">Add</button>
 </EditForm>
+
+@if (IsDirty)
+{
+    @*Cancel navigation if user has begun entering data in this page:
+    If user has entered any data than ask user before navigation to other page inside this app(“OnBeforeInternalNavigation”) 
+    or to any external page(“ConfirmExternalNavigation”)(including the event of closing this tab in a browser).*@
+    <NavigationLock OnBeforeInternalNavigation="BeforeNavigationAsync" ConfirmExternalNavigation />
+}
