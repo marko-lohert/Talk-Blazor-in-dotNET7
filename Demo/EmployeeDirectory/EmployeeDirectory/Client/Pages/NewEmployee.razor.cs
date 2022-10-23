@@ -45,6 +45,9 @@ public partial class NewEmployee
 
     async Task BeforeNavigationAsync(LocationChangingContext context)
     {
+        if (IsDirty is false)
+            return;
+
         bool userConfirmed = await JS.InvokeAsync<bool>("window.confirm", new object[] { "If you leave this page, you'll lose your changes." });
 
         if (userConfirmed is false)
