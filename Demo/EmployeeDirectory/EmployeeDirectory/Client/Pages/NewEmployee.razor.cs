@@ -1,4 +1,5 @@
 ﻿using EmployeeDirectory.Shared;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 using System.Net.Http.Json;
 
@@ -24,6 +25,15 @@ public partial class NewEmployee
     private void NewUserSubmit()
     {
         Http.PostAsJsonAsync<Employee>("Employee", NewEmployeeModel);
+
+        // Navigate to Index.razor and carry the following info to that page:
+        // first and last name of employee that was just added.
+        NavigationOptions navOptions = new()
+        {
+            HistoryEntryState = $"{NewEmployeeModel.FirstName} {NewEmployeeModel.LastName}"
+        };
+
+        NavigationManager.NavigateTo("/", navOptions);
     }
 
     void OnDataInput()

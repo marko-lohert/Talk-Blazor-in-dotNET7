@@ -1,8 +1,17 @@
 ﻿@page "/"
 
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <PageTitle>Directory of Employees</PageTitle>
+
+
+@if (NavigationManager.HistoryEntryState is not null or "")
+{
+    <div class="alert alert-success" role="alert">
+        Employee @NavigationManager.HistoryEntryState was just added.
+    </div>
+}
 
 <h1>Directory of Employees</h1>
 
