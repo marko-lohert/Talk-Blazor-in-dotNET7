@@ -22,9 +22,9 @@ public partial class NewEmployee
         NewEmployeeModel.DateOfEmployment = DateTime.Now.Date;
     }
 
-    private void NewUserSubmit()
+    private async Task NewUserSubmit()
     {
-        Http.PostAsJsonAsync<Employee>("Employee", NewEmployeeModel);
+        await Http.PostAsJsonAsync<Employee>("Employee", NewEmployeeModel);
 
         IsDirty = false;
 
