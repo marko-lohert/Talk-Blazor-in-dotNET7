@@ -15,6 +15,16 @@
 
 <h1>Directory of Employees</h1>
 
+<br />
+<br />
+
+<label class="form-label col-md-1">Filter</label>
+<input id="filterLastName" @bind="FilterText" @bind:event="oninput" class="form-control-sm col-md-2" />
+<button class="btn btn-primary" @onclick="LoadDataFromServer">Load From Server</button>
+
+<br />
+<br />
+
 @if (Directory?.Employees is not null)
 {
     <table class="table" style="width:1000px">

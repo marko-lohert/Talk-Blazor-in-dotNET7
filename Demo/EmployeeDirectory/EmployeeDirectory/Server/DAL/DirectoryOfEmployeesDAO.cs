@@ -6,13 +6,35 @@ public class DirectoryOfEmployeesDAO
 {
     public static DirectoryOfEmployees? CacheDirectoryOfEmployees { get; private set; } = new() { Employees = new() };
 
-    public DirectoryOfEmployees GetDirectoryOfEmployees()
+    public DirectoryOfEmployees GetDirectoryOfEmployees(string? filterText = null)
     {
         if (CacheDirectoryOfEmployees?.Employees is null || CacheDirectoryOfEmployees.Employees.Count == 0)
-            CacheDirectoryOfEmployees = MockDataDirectoryOfEmployees(countEmployees: 1000);
-        
-        return CacheDirectoryOfEmployees;
+            CacheDirectoryOfEmployees = MockDataDirectoryOfEmployees(countEmployees: SizeMockData);
+
+        if (filterText is null)
+        {
+            return CacheDirectoryOfEmployees;
+        }
+        else
+        {
+            DirectoryOfEmployees filteredEmployees = new() { Employees = new() };
+
+            if (CacheDirectoryOfEmployees?.Employees is null || CacheDirectoryOfEmployees.Employees.Count == 0)
+                return filteredEmployees;
+
+            foreach (Employee employee in CacheDirectoryOfEmployees.Employees)
+            {
+                if (employee.FirstName.ToLower().Contains(filterText.ToLower()) || employee.LastName.ToLower().Contains(filterText.ToLower()))
+                    filteredEmployees.Employees.Add(employee);
+            }
+
+            return filteredEmployees;
+        }
+
     }
+
+    // How many employees will mocke employees directory contain?
+    private const int SizeMockData = 3000;
 
     private static DirectoryOfEmployees MockDataDirectoryOfEmployees(int countEmployees)
     {

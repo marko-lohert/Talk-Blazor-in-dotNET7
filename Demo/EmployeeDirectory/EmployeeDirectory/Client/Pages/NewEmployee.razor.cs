@@ -24,7 +24,7 @@ public partial class NewEmployee
 
     private async Task NewUserSubmit()
     {
-        await Http.PostAsJsonAsync<Employee>("Employee", NewEmployeeModel);
+        await Http.PostAsJsonAsync<Employee>("api/Employee", NewEmployeeModel);
 
         IsDirty = false;
 
