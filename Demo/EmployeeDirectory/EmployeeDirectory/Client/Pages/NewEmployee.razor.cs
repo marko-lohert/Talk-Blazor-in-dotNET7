@@ -23,7 +23,7 @@ public partial class NewEmployee
 
     private void NewUserSubmit()
     {
-        Http.PostAsJsonAsync<Employee>("Employee", NewEmployeeModel);
+        Http.PostAsJsonAsync<Employee>("api/Employee", NewEmployeeModel);
 
         IsDirty = false;
     }

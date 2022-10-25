@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EmployeeDirectory.Server.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class DirectoryOfEmployeesController
 {
     private readonly ILogger<DirectoryOfEmployeesController> _logger;
@@ -20,5 +20,12 @@ public class DirectoryOfEmployeesController
     {
         DirectoryOfEmployeesDAO dao = new();
         return dao.GetDirectoryOfEmployees();
+    }
+
+    [HttpGet("GetFilter")]
+    public DirectoryOfEmployees GetFilter([FromQuery] string filterText)
+    {
+        DirectoryOfEmployeesDAO dao = new();
+        return dao.GetDirectoryOfEmployees(filterText);
     }
 }
