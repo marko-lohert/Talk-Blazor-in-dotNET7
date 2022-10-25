@@ -6,6 +6,7 @@ namespace EmployeeDirectory.Client.Pages;
 public partial class NewEmployee
 {
     public Employee NewEmployeeModel { get; set; } = new();
+
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -15,9 +16,9 @@ public partial class NewEmployee
         // Default date of employment is today.
         NewEmployeeModel.DateOfEmployment = DateTime.Now.Date;
     }
-    
+
     private void NewUserSubmit()
     {
-        Http.PostAsJsonAsync<Employee>("Employee", NewEmployeeModel);
+        Http.PostAsJsonAsync<Employee>("api/Employee", NewEmployeeModel);
     }
 }

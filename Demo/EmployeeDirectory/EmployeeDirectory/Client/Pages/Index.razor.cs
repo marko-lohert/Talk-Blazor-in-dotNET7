@@ -7,8 +7,18 @@ public partial class Index
 {
     DirectoryOfEmployees? Directory { get; set; }
 
+    public string FilterText { get; set; } = string.Empty;
+
     protected override async Task OnInitializedAsync()
     {
-        Directory = await Http.GetFromJsonAsync<DirectoryOfEmployees>("DirectoryOfEmployees");
+        await LoadDataFromServer();
+    }
+
+    private async Task LoadDataFromServer()
+    {
+        if (FilterText is null or "")
+            Directory = await Http.GetFromJsonAsync<DirectoryOfEmployees>("api/DirectoryOfEmployees");
+        else
+            Directory = await Http.GetFromJsonAsync<DirectoryOfEmployees>($"api/DirectoryOfEmployees/GetFilter?filterText={FilterText}");
     }
 }
