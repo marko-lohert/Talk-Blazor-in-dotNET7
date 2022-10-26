@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<Copyright>Copyright (c) 2022 Marko Lohert</Copyright>
+	<Authors>Marko Lohert</Authors>
+	<PackageLicenseFile>..\..\..\..\LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0-rc.2.22476.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Client\EmployeeDirectory.Client.csproj" />
+    <ProjectReference Include="..\Shared\EmployeeDirectory.Shared.csproj" />
+  </ItemGroup>
+
+
+</Project>
